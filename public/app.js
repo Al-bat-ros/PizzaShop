@@ -8,6 +8,9 @@ function something()
 
         //запись в localStorage значения
         window.localStorage.setItem('bbb',x);
+        
+        //удоление из localStorage
+        //window.localStorage.removeItem('aaa');
 
 		alert(x);
 
