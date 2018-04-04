@@ -1,9 +1,13 @@
 function something()
 	{
-        
-        var x = localStorage.getItem('aaa');
+        //запись значения из localStorage в переменную  
+        var x = window.localStorage.getItem('bbb');
 
-        window.localStorage.setItem('aaa',111);
+        //проблема с со сложением строк и переводом их в тип integer решается умножением на еденицу
+        x = x * 1 + 1;
+
+        //запись в localStorage значения
+        window.localStorage.setItem('bbb',x);
 
 		alert(x);
 
