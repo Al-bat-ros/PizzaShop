@@ -1,4 +1,28 @@
 <h2>Welcome to PizzaShop</h2>
 
+<div class="container-fluid">
+  <div class="row">
+
+	  <% @pizza.each do |piz| %>
+
+         <div class="col-sm-6 col-md-3">
+           <div class="thumbnail">
+             <img src="<%= piz.path_to_image %>" alt="...">
+             <div class="caption">
+               <h3> <%= piz.title %> </h3>
+               <p><%= piz.description %></p>
+               <p>Размер пицы: <%= piz.size %>.см.</p>
+               <p>Цена пицы: <%= piz.price %>.р.</p>
+               <p><a href="/basket" class="btn btn-primary" onclick="something()" role="button">В карзину</a></p>
+             </div>
+           </div>
+         </div>
+       
+    <% end %>
+
+  </div>
+</div>
+
+
 <button type="button" class="btn btn-primary" onclick="something()" >Default</button>
 
