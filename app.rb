@@ -24,3 +24,7 @@ get '/basket' do
   erb :basket
 end
 
+post '/basket' do
+
+end
+
