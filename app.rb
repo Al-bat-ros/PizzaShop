@@ -25,6 +25,6 @@ get '/basket' do
 end
 
 post '/basket' do
-
+   erb :basket
 end
 
