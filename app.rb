@@ -25,8 +25,8 @@ get '/basket' do
 end
 
 post '/basket' do
-	orders_input = params[:orders]
-	@items = parse_orders_line orders_input
+	@orders_input = params[:orders]
+	@items = parse_orders_line @orders_input
 
 	@items.each do|item|
       # id, cnt

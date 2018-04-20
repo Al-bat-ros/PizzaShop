@@ -35,3 +35,26 @@
       </tbody>
     </table>
 
+
+    <form action="/place_order" method="POST" role="form">
+
+      <input type="hidder" name="order[orders_input]" value="<%= @orders_input %>">
+  <div class="form-group">
+    <label>Ваше имя</label>
+    <input name="order[name]" type="text" class="form-control" id="name" placeholder="Введите ваше имя" >
+  </div>
+
+  <div class="form-group">
+    <label>Ваш телефон</label>
+    <input name="order[phone]" type="text" class="form-control" id="phone" placeholder="Введите ваш номер телевона" >
+  </div>
+
+  <div class="form-group">
+    <label>Адрес доставки</label>
+    <textarea name="order[address]" class="form-control" id="data" placeholder="Введите адрес доставки" ></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-lg">Отправить заказ</button>
+
+</form>
+
