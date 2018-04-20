@@ -1,21 +1,24 @@
 <h2>Вашa карзина</h2>
 
-<%= @items.inspect %>
+<!-- <%= @items.inspect %> -->
 
 <table class="table">
       <thead>
         <tr>
-          <th>id</th>
           <th>Название пиццы</th>
+          <th>Цена</th>
           <th>Количество</th>
         </tr>
       </thead>
       <tbody>
+
+      <% @items.each do |item| %>  
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td><%= item[0].title %></td>
+          <td><%= item[0].price %></td>
+          <td><%= item[1] %></td>
         </tr>
+      <% end %>  
       </tbody>
     </table>
 
