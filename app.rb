@@ -26,8 +26,13 @@ end
 
 post '/basket' do
 	orders_input = params[:orders]
-	@orders = parse_orders_line orders_input
-   erb "Hello! #{@orders.inspect}"
+	@items = parse_orders_line orders_input
+
+	@items.each do|item|
+      # id, cnt
+      item[0] = @pizza.find(item[0])
+	end
+   erb :basket
 end
 
 def parse_orders_line orders_input
