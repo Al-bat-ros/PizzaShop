@@ -8,6 +8,9 @@ set :database, "sqlite3:pizzashop.db"
 class Product < ActiveRecord::Base
 end
 
+class Order < ActiveRecord::Base
+end
+
 before do
   @pizza = Product.all
 end
@@ -34,6 +37,20 @@ post '/basket' do
 	end
    erb :basket
 end
+
+post '/place_order' do
+ 
+ @o = Order.new params[:cart]
+   if @o.save
+   	 erb "Спасибо ваш заказ принят!"
+   	else
+   		@error = "Заказ непринят"
+        erb :basket
+   end
+
+  #erb @o.inspect
+end
+
 
 def parse_orders_line orders_input
 
