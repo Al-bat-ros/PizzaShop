@@ -38,7 +38,7 @@
 <!--<input type="hidder" name="cart[orders_input]" value="<%= @orders_input %>">-->
     <form action="/place_order" method="POST" role="form">
 
-      
+       
   <div class="form-group">
     <label>Ваше имя</label>
     <input name="cart[name]" type="text" class="form-control" id="name" placeholder="Введите ваше имя" >
@@ -53,6 +53,8 @@
     <label>Адрес доставки</label>
     <textarea name="cart[address]" class="form-control" id="address" placeholder="Введите адрес доставки" ></textarea>
   </div>
+
+  <input  name="cart[orders_input]" type="hidder" value="<%= @orders_input %>">
 
   <button type="submit" class="btn btn-primary btn-lg">Отправить заказ</button>
 

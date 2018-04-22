@@ -13,6 +13,7 @@ end
 
 before do
   @pizza = Product.all
+  @cart = Order.all
 end
 
 get '/' do
@@ -48,7 +49,10 @@ post '/place_order' do
         erb :basket
    end
 
-  #erb @o.inspect
+end
+
+get '/place_order' do
+   erb :place_order
 end
 
 
