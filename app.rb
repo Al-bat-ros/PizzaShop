@@ -42,13 +42,13 @@ end
 post '/place_order' do
  
  @o = Order.new params[:cart]
-   if @o.save
+   if @o.save 
    	 erb "Спасибо ваш заказ принят!"
    	else
    		@error = "Заказ непринят"
         erb :basket
    end
-
+   erb :order_placed
 end
 
 get '/place_order' do
