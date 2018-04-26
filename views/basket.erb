@@ -2,61 +2,64 @@
 
 <!-- <%= @items.inspect %> -->
 
-<table class="table">
-      <thead>
+<div id="cart">
+
+  <table class="table">
+        <thead>
+          <tr>
+            <th>Название пиццы</th>
+            <th>Цена</th>
+            <th>Количество</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% total_price = 0 %>
+        <% total_qty = 0 %>
+
+        <% @items.each do |item| %>  
+          <tr>
+            <td><%= item[0].title %></td>
+            <td><%= item[0].price %></td>
+            <td><%= item[1] %></td>
+          </tr>
+
+          <% total_price += item[0].price * item[1].to_i %>
+          <% total_qty += item[1].to_i %>
+
+        <% end %>  
+
         <tr>
-          <th>Название пиццы</th>
-          <th>Цена</th>
-          <th>Количество</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% total_price = 0 %>
-      <% total_qty = 0 %>
+            <td></td>
+            <td><%= total_price %></td>
+            <td><%= total_qty %></td>
+          </tr>
 
-      <% @items.each do |item| %>  
-        <tr>
-          <td><%= item[0].title %></td>
-          <td><%= item[0].price %></td>
-          <td><%= item[1] %></td>
-        </tr>
+        </tbody>
+      </table>
 
-        <% total_price += item[0].price * item[1].to_i %>
-        <% total_qty += item[1].to_i %>
+  <!--<input type="hidder" name="cart[orders_input]" value="<%= @orders_input %>">-->
+      <form action="/place_order" method="POST" role="form">
 
-      <% end %>  
+         
+    <div class="form-group">
+      <label>Ваше имя</label>
+      <input name="cart[name]" type="text" class="form-control" id="name" placeholder="Введите ваше имя" >
+    </div>
 
-      <tr>
-          <td></td>
-          <td><%= total_price %></td>
-          <td><%= total_qty %></td>
-        </tr>
+    <div class="form-group">
+      <label>Ваш телефон</label>
+      <input name="cart[phone]" type="text" class="form-control" id="phone" placeholder="Введите ваш номер телевона" >
+    </div>
 
-      </tbody>
-    </table>
+    <div class="form-group">
+      <label>Адрес доставки</label>
+      <textarea name="cart[address]" class="form-control" id="address" placeholder="Введите адрес доставки" ></textarea>
+    </div>
 
-<!--<input type="hidder" name="cart[orders_input]" value="<%= @orders_input %>">-->
-    <form action="/place_order" method="POST" role="form">
+    <input  name="cart[orders_input]" type="hidden" value="<%= @orders_input %>">
 
-       
-  <div class="form-group">
-    <label>Ваше имя</label>
-    <input name="cart[name]" type="text" class="form-control" id="name" placeholder="Введите ваше имя" >
-  </div>
+    <button type="submit" class="btn btn-primary btn-lg">Отправить заказ</button>
+    <button class="btn btn-danger btn-lg" onclick="cancel_order();return false">Cancel</button>
+  </form>
 
-  <div class="form-group">
-    <label>Ваш телефон</label>
-    <input name="cart[phone]" type="text" class="form-control" id="phone" placeholder="Введите ваш номер телевона" >
-  </div>
-
-  <div class="form-group">
-    <label>Адрес доставки</label>
-    <textarea name="cart[address]" class="form-control" id="address" placeholder="Введите адрес доставки" ></textarea>
-  </div>
-
-  <input  name="cart[orders_input]" type="hidden" value="<%= @orders_input %>">
-
-  <button type="submit" class="btn btn-primary btn-lg">Отправить заказ</button>
-  <button class="btn btn-danger btn-lg" onclick="cancel_order();return false">Cancel</button>
-</form>
-
+</div>
