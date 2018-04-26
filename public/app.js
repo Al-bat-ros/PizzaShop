@@ -80,3 +80,8 @@ function add_to_cart(id)
          }
          return orders;
  }
+
+ function cancel_order()
+ {
+  alert('aaa');
+ }
