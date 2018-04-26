@@ -29,13 +29,23 @@ get '/basket' do
 end
 
 post '/basket' do
+
+	#получаем список пораметров и разбираем их
 	@orders_input = params[:orders]
 	@items = parse_orders_line @orders_input
 
+	#выводим сообщение что корзина пуста
+	if @items.length == 0
+       return erb :cart_is_empty
+	end
+
+    #выводим список продуктов в корзине
 	@items.each do|item|
       # id, cnt
       item[0] = @pizza.find(item[0])
 	end
+
+	#возвращаем представление по умолчанию
    erb :basket
 end
 
