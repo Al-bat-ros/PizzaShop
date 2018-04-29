@@ -37,7 +37,7 @@ function add_to_cart(id)
 
  function update_orders_button()
  {
-    var text = 'Cart (' + cart_get_number_of_items() + ')';
+    var text = '(' + cart_get_number_of_items() + ')';
     $('#orders_button').val(text); //это jquery
  } 
  
@@ -87,5 +87,5 @@ function add_to_cart(id)
   update_orders_button();
   update_orders_input();
 
-  $('#cart').text('Your cart is now empty');
+  $('#cart').text('Your cart is now empty');//это jquery
  }

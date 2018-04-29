@@ -9,11 +9,15 @@ class Product < ActiveRecord::Base
 end
 
 class Order < ActiveRecord::Base
+	validates :name, presence: true, length: { minimum: 1 }
+	validates :phone, presence: true, length: { minimum: 4 }
+	validates :address, presence: true, length: { minimum: 5 }
+	validates :orders_input, presence: true, length: { minimum: 3 }
 end
 
 before do
   @pizza = Product.all
-  @cart = Order.all
+  @cart = Order.all 
 end
 
 get '/' do
@@ -29,6 +33,7 @@ get '/basket' do
 end
 
 get '/admin' do
+  @cart_admin = Order.order 'created_at DESC'	
   erb :admin
 end
 
@@ -59,10 +64,9 @@ post '/place_order' do
    if @o.save 
    	 erb "Спасибо ваш заказ принят!"
    	else
-   		@error = "Заказ непринят"
+   		@error = @o.errors.full_messages.first
         erb :basket
    end
-   erb :order_placed
 end
 
 get '/place_order' do

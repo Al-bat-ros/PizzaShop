@@ -11,12 +11,14 @@
         </tr>
       </thead>
       <tbody>
+      	<% @cart_admin.each do |cart| %>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
+          <td><%= cart.id %></td>
+          <td><%= cart.name %></td>
+          <td><%= cart.phone %></td>
+          <td><%= cart.address %></td>
+          <td><%= cart.orders_input %></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
