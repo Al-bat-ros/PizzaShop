@@ -28,6 +28,10 @@ get '/basket' do
   erb :basket
 end
 
+get '/admin' do
+  erb :admin
+end
+
 post '/basket' do
 
 	#получаем список пораметров и разбираем их
